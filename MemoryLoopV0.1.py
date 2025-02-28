@@ -21,10 +21,11 @@ startAudio.save('start.mp3')
 endAudio.save('end.mp3')
 print('ready')
 class Fact:
-    def __init__ (self,question,answer):
+    def __init__ (self,question,answer,box):
         self.question = question
         self.answer = answer
-    box = 1
+        self.box = box
+    
     def askQuestion(self):
         print(self.question)
         response = ""
@@ -75,15 +76,23 @@ class Fact:
 
 day = 1
 boxes = [7,6,5,4,3,2,1]
-f1 = Fact("Why","a")
-f2 = Fact("who","you")
-f3 = Fact("where?","here")
+f1 = Fact("What is the third planet from the sun?","earth",1)
+f2 = Fact("What is the longest river in the world?","the nile",1)
+f3 = Fact("Who wrote the cat in the hat?","Dr Seuss",1)
+f4 = Fact("what is the capital of France?","paris",0)
+f5 = Fact("Fill in the blank: Roses are red, violets are :","blue",0)
+futureFacts = [f4,f5]
 factArray = [f1,f2,f3]
 
 while day<=64:
     userInput = input()
     if(userInput == "day"):
         print("day = ",day)
+        i = 0
+        while i<2:
+            futureFacts[i].box = 1
+            factArray.append(futureFacts[i])
+            futureFacts.pop(futureFacts[i])
         askedYet = False
         prevRssi = 0
         while(askedYet == False):
