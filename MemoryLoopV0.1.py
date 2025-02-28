@@ -89,7 +89,7 @@ while day<=64:
     if(userInput == "day"):
         print("day = ",day)
         i = 0
-        if(day != 0):
+        if(day != 1):
             while i<2 and len(futureFacts) > 0:
                 futureFacts[0].box = 1
                 factArray.append(futureFacts[0])
