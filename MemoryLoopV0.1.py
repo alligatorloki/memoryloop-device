@@ -40,7 +40,8 @@ class Fact:
             print("Say something!")
             audio = r.listen(source)
         try:
-            response = r.recognize_sphinx(audio)
+            #response = r.recognize_sphinx(audio)
+            response = r.recognize_vosk(audio)
         except sr.UnknownValueError:
             response = "Sphinx could not understand audio"
         except sr.RequestError as e:
