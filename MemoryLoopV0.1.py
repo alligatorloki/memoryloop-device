@@ -2,7 +2,7 @@ from gtts import gTTS
 import pygame
 import time
 import queue
-import pyflac
+#import pyflac
 import sounddevice as sd
 import os
 from bleak import BleakClient
