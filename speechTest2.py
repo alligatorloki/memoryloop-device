@@ -1,8 +1,7 @@
 import pyaudio
 from pydub import AudioSegment, effects  
 from os import path
-
-
+import speech_recognition as sr
 import wave
 print("test")
 chunk = 1024  # Record in chunks of 1024 samples
@@ -47,7 +46,7 @@ wf.close()
 rawsound = AudioSegment.from_file("./output.wav", "wav")  
 normalizedsound = effects.normalize(rawsound)  
 normalizedsound.export("./balancedoutput.wav", format="wav")
-AUDIO_FILE = path.join(path.dirname(path.realpath('balancedoutput.wav')), "english.wav")
+AUDIO_FILE = path.join(path.dirname(path.realpath(balancedoutput.wav)), "english.wav")
 r = sr.Recognizer()
 with sr.AudioFile(AUDIO_FILE) as source:
     audio = r.record(source)  # read the entire audio file
