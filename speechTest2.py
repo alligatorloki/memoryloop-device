@@ -1,4 +1,7 @@
 import pyaudio
+from pydub import AudioSegment, effects  
+
+
 import wave
 print("test")
 chunk = 1024  # Record in chunks of 1024 samples
@@ -40,3 +43,6 @@ wf.setsampwidth(p.get_sample_size(sample_format))
 wf.setframerate(fs)
 wf.writeframes(b''.join(frames))
 wf.close()
+rawsound = AudioSegment.from_file("./output.wav", "wav")  
+normalizedsound = effects.normalize(rawsound)  
+normalizedsound.export("./balancedoutput.wav", format="wav")
