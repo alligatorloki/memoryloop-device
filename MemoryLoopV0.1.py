@@ -2,7 +2,7 @@ from gtts import gTTS
 import pygame
 import time
 import queue
-import pyflac
+#import pyflac
 import sounddevice as sd
 import os
 from bleak import BleakClient
@@ -10,7 +10,7 @@ import speech_recognition as sr
 pygame.init()
 from bluepy.btle import Scanner
 from pydub import AudioSegment, effects  
-adress = "dd:34:02:0a:44:38"
+adress = "dd:34:02: 0a:44:38"
 scanner = Scanner()
 devices = scanner.scan(3.0)
 askedYet = False
@@ -84,7 +84,7 @@ day = 1
 boxes = [7,6,5,4,3,2,1]
 f1 = Fact("What is the third planet from the sun?","earth",1)
 f2 = Fact("What is the longest river in the world?","the nile",1)
-f3 = Fact("Who wrote the cat in the hat?","Dr Seuss",1)
+f3 = Fact("Who wrote the cat in the hat?","doctor seuss",1)
 f4 = Fact("what is the capital of France?","paris",0)
 f5 = Fact("Fill in the blank: Roses are red, violets are :","blue",0)
 f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
