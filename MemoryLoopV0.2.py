@@ -70,7 +70,7 @@ class Fact:
         stream.stop_stream()
         stream.close()
         # Terminate the PortAudio interface
-        p.terminate()
+        
 
         print('Finished recording')
 
