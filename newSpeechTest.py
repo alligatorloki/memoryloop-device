@@ -1,5 +1,6 @@
 import pyaudio
 import webrtcvad
+import numpy
 
 # Initialize VAD
 vad = webrtcvad.Vad()
