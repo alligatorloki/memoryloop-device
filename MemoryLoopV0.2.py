@@ -63,7 +63,7 @@ class Fact:
         pygame.mixer.music.play()
         time.sleep(songLength)
         for i in range(0, int(fs / chunk * seconds)):
-            data = stream.read(chunk, exception_on_overflow = False).
+            data = stream.read(chunk, exception_on_overflow = False)
             frames.append(data)
 
 # Stop and close the stream 
