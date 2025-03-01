@@ -25,7 +25,7 @@ adress = "dd:34:02: 0a:44:38"
 scanner = Scanner()
 devices = scanner.scan(3.0)
 askedYet = False
-
+p = pyaudio.PyAudio()  # Create an interface to PortAudio
 r = sr.Recognizer()
 rawsound = AudioSegment.from_file("./output.wav", "wav")  
 normalizedsound = effects.normalize(rawsound)  
