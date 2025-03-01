@@ -30,11 +30,7 @@ r = sr.Recognizer()
 rawsound = AudioSegment.from_file("./output.wav", "wav")  
 normalizedsound = effects.normalize(rawsound)  
 normalizedsound.export("./output.wav", format="wav")
-stream = p.open(format=sample_format,
-                channels=channels,
-                rate=fs,
-                frames_per_buffer=chunk,
-                input=True)
+
 
 frames = []  # Initialize array to store frames
 
@@ -62,6 +58,11 @@ class Fact:
         pygame.mixer.music.load('question.mp3')
         pygame.mixer.music.play()
         time.sleep(songLength)
+        stream = p.open(format=sample_format,
+                channels=channels,
+                rate=fs,
+                frames_per_buffer=chunk,
+                input=True)
         for i in range(0, int(fs / chunk * seconds)):
             data = stream.read(chunk, exception_on_overflow = False)
             frames.append(data)
@@ -70,7 +71,7 @@ class Fact:
         stream.stop_stream()
         stream.close()
         # Terminate the PortAudio interface
-        
+        #p.terminate()
 
         print('Finished recording')
 
