@@ -27,7 +27,7 @@ devices = scanner.scan(3.0)
 askedYet = False
 
 r = sr.Recognizer()
-rawsound = AudioSegment.from_file("./input.m4a", "m4a")  
+rawsound = AudioSegment.from_file("./output.wav", "wav")  
 normalizedsound = effects.normalize(rawsound)  
 normalizedsound.export("./output.wav", format="wav")
 stream = p.open(format=sample_format,
@@ -84,7 +84,7 @@ class Fact:
         rawsound = AudioSegment.from_file("./output.wav", "wav")  
         normalizedsound = effects.normalize(rawsound)  
         normalizedsound.export("./balancedoutput.wav", format="wav")
-        AUDIO_FILE = path.join(path.dirname(path.realpath(balancedoutput.wav)), "english.wav")
+        AUDIO_FILE = path.join(path.dirname(path.realpath('balancedoutput.wav')), "balancedoutput.wav")
         r = sr.Recognizer()
         with sr.AudioFile(AUDIO_FILE) as source:
             audio = r.record(source)  # read the entire audio file
