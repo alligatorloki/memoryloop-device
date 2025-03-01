@@ -11,7 +11,7 @@ def is_speech(frame, sample_rate):
 # Audio configuration
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 16000
+RATE = 8000
 CHUNK = 1024
 
 # Initialize PyAudio
