@@ -1,65 +1,42 @@
 import pyaudio
-import webrtcvad
-import numpy
-
-# Initialize VAD
-vad = webrtcvad.Vad()
-vad.set_mode(1)  # 0: Aggressive filtering, 3: Less aggressive
-
-def is_speech(frame, sample_rate):
-    return vad.is_speech(frame, sample_rate)
-# Audio configuration
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 8000
-CHUNK = 1024
-
-# Initialize PyAudio
-audio = pyaudio.PyAudio()
-
-# Open stream
-stream = audio.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK)
-def record_audio():
-    frames = []
-    recording = False
-
-    print("Listening for speech...")
-
-    while True:
-        frame = stream.read(CHUNK)
-
-        if is_speech(frame, RATE):
-            if not recording:
-                print("Recording started.")
-                recording = True
-            frames.append(frame)
-        else:
-            if recording:
-                print("Silence detected, stopping recording.")
-                break
-
-    # Stop and close the stream
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
-
-    return frames
 import wave
 
-def save_audio(frames, filename="output.wav"):
-    wf = wave.open(filename, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(audio.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+chunk = 1024  # Record in chunks of 1024 samples
+sample_format = pyaudio.paInt16  # 16 bits per sample
+channels = 2
+fs = 44100  # Record at 44100 samples per second
+seconds = 3
+filename = "output.wav"
 
-# Example usage
-frames = record_audio()
-save_audio(frames)
-print("Audio saved as output.wav")
+p = pyaudio.PyAudio()  # Create an interface to PortAudio
 
+print('Recording')
+
+stream = p.open(format=sample_format,
+                channels=channels,
+                rate=fs,
+                frames_per_buffer=chunk,
+                input=True)
+
+frames = []  # Initialize array to store frames
+
+# Store data in chunks for 3 seconds
+for i in range(0, int(fs / chunk * seconds)):
+    data = stream.read(chunk)
+    frames.append(data)
+
+# Stop and close the stream 
+stream.stop_stream()
+stream.close()
+# Terminate the PortAudio interface
+p.terminate()
+
+print('Finished recording')
+
+# Save the recorded data as a WAV file
+wf = wave.open(filename, 'wb')
+wf.setnchannels(channels)
+wf.setsampwidth(p.get_sample_size(sample_format))
+wf.setframerate(fs)
+wf.writeframes(b''.join(frames))
+wf.close()
