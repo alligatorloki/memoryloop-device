@@ -16,6 +16,9 @@ devices = scanner.scan(3.0)
 askedYet = False
 
 r = sr.Recognizer()
+rawsound = AudioSegment.from_file("./input.m4a", "m4a")  
+normalizedsound = effects.normalize(rawsound)  
+normalizedsound.export("./output.wav", format="wav")
 
 startText = "Hello. I am going to ask you some questions. Please answer to the best of your ability. Say ok to continue"
 endText = "Thank you for answering these questions. That will be all"
