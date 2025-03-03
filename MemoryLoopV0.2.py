@@ -84,7 +84,10 @@ class Fact:
         wf.setframerate(fs)
         wf.writeframes(b''.join(frames))
         wf.close()
-        rawsound = AudioSegment.from_file("./output.wav", "wav")  
+        try:
+            rawsound = AudioSegment.from_file("./output.wav", "wav")  
+        except:
+            print("idk man")
         normalizedsound = effects.normalize(rawsound)  
         normalizedsound.export("./balancedoutput.wav", format="wav")
         AUDIO_FILE = path.join(path.dirname(path.realpath('balancedoutput.wav')), "balancedoutput.wav")
