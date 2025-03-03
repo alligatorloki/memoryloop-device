@@ -48,6 +48,7 @@ class Fact:
         self.box = box
     
     def askQuestion(self):
+        frames = []
         print(self.question)
         response = ""
         questionAudio = gTTS(self.question)
@@ -125,7 +126,7 @@ class Fact:
             time.sleep(songLength)
             
             print(self.box)
-        frames = []
+        
    
 
 day = 1
