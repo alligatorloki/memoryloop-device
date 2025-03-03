@@ -2,6 +2,7 @@ from gtts import gTTS
 import pygame
 import time
 import queue
+import re
 #import pyflac
 import sounddevice as sd
 import os
@@ -46,6 +47,7 @@ class Fact:
     def __init__ (self,question,answer,box):
         self.question = question
         self.answer = answer
+        
         self.box = box
     
     def askQuestion(self):
@@ -93,7 +95,7 @@ class Fact:
         response = r.recognize_vosk(audio)
         #userAnswer = input("enter answer\n")
         userAnswer = response
-        if(userAnswer == self.answer):
+        if(re.search(self.answer,userAnswer)):
             result = ('correct, the answer is: ' + self.answer)
             self.box += 1
             resultAudio = gTTS(result)
@@ -123,7 +125,7 @@ class Fact:
 day = 1
 boxes = [7,6,5,4,3,2,1]
 f1 = Fact("What is the third planet from the sun?","earth",1)
-f2 = Fact("What is the longest river in the world?","the nile",1)
+f2 = Fact("What is the longest river in the world?","nile",1)
 f3 = Fact("Who wrote the cat in the hat?","doctor seuss",1)
 f4 = Fact("what is the capital of France?","paris",0)
 f5 = Fact("Fill in the blank: Roses are red, violets are :","blue",0)
