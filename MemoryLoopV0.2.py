@@ -95,6 +95,8 @@ class Fact:
         response = r.recognize_vosk(audio)
         #userAnswer = input("enter answer\n")
         userAnswer = response
+        os.remove("./output.wav")
+        os.remove
         if(re.search(self.answer,userAnswer)):
             result = ('correct, the answer is: ' + self.answer)
             self.box += 1
