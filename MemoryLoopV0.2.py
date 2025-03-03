@@ -28,7 +28,10 @@ devices = scanner.scan(3.0)
 askedYet = False
 p = pyaudio.PyAudio()  # Create an interface to PortAudio
 r = sr.Recognizer()
-rawsound = AudioSegment.from_file("./output.wav", "wav")  
+try:
+    rawsound = AudioSegment.from_file("./output.wav", "wav")  
+except:
+    print("idk man 2: electric boogaloo")
 normalizedsound = effects.normalize(rawsound)  
 normalizedsound.export("./output.wav", format="wav")
 
