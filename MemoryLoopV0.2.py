@@ -44,11 +44,11 @@ endAudio.save('end.mp3')
 print('ready')
 def remindMeal():
     x = datetime.datetime.now()
-    if(11>x.strftime("%H")>6):
+    if(11>int(x.strftime("%H"))>6):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had breakfast?")
-    elif(4>x.strftime("%H")>11):
+    elif(4>int(x.strftime("%H"))>11):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had lunch?")
-    elif(8>x.strftime("%H")>4):
+    elif(8>int(x.strftime("%H"))>4):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had dinner?")
     else:
         reminder = ""
