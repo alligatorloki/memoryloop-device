@@ -98,6 +98,7 @@ class Fact:
         userAnswer = response
         os.remove("./output.wav")
         os.remove("./balancedoutput.wav")
+        frames = []
         if(re.search(self.answer,userAnswer)):
             result = ('correct, the answer is: ' + self.answer)
             self.box += 1
