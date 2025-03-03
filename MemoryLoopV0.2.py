@@ -1,7 +1,9 @@
 from gtts import gTTS
 import pygame
 import time
+import datetime
 import queue
+
 import re
 #import pyflac
 import sounddevice as sd
@@ -21,6 +23,7 @@ sample_format = pyaudio.paInt16  # 16 bits per sample
 channels = 2
 fs = 44100  # Record at 44100 samples per second
 seconds = 3
+reminder = ""
 filename = "output.wav"
 adress = "dd:34:02: 0a:44:38"
 scanner = Scanner()
@@ -39,7 +42,24 @@ endAudio = gTTS(endText)
 startAudio.save('start.mp3')
 endAudio.save('end.mp3')
 print('ready')
-
+def remindMeal():
+    x = datetime.datetime.now()
+    if(11>x.strftime("%H")>6):
+        reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had breakfast?")
+    elif(4>x.strftime("%H")>11):
+        reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had lunch?")
+    elif(8>x.strftime("%H")>4):
+        reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had dinner?")
+    else:
+        reminder = ""
+    remidneraudio = gTTS(reminder)
+    remidneraudio.save('result.mp3')
+    reminderAud = pygame.mixer.Sound('result.mp3')
+    songLength = reminderAud.get_length()
+    pygame.mixer.music.load('result.mp3')
+    print(reminder)
+    pygame.mixer.music.play()
+    time.sleep(songLength)
 class Fact:
     def __init__ (self,question,answer,box):
         self.question = question
@@ -146,6 +166,7 @@ while day<=64:
     if(userInput == "day"):
         print("day = ",day)
         i = 0
+        
         if(day != 1):
             while i<2 and len(futureFacts) > 0:
                 futureFacts[0].box = 1
@@ -162,7 +183,7 @@ while day<=64:
                         print("final if triggerd")
                         askedYet = True
                     prevRssi = device.rssi
-                    
+        
         print(startText)
         startAudio = pygame.mixer.Sound('start.mp3')
         songLength = startAudio.get_length()
@@ -200,6 +221,7 @@ while day<=64:
         pygame.mixer.music.play()
         time.sleep(songLength)
         day += 1
+        remindMeal()
 
     if(userInput == "end"):
         day = 65
