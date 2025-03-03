@@ -52,6 +52,7 @@ class Fact:
         response = ""
         questionAudio = gTTS(self.question)
         questionAudio.save('question.mp3')
+        p = pyaudio.PyAudio()
         qAudio = pygame.mixer.Sound('question.mp3')
         songLength = qAudio.get_length()
         pygame.mixer.music.load('question.mp3')
@@ -70,7 +71,7 @@ class Fact:
         stream.stop_stream()
         stream.close()
         # Terminate the PortAudio interface
-        #p.terminate()
+        p.terminate()
 
         print('Finished recording')
 
