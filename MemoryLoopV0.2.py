@@ -66,7 +66,7 @@ class Fact:
         for i in range(0, int(fs / chunk * seconds)):
             data = stream.read(chunk, exception_on_overflow = False)
             frames.append(data)
-        frames.pop(0)
+        
 
 # Stop and close the stream 
         stream.stop_stream()
@@ -125,6 +125,7 @@ class Fact:
             time.sleep(songLength)
             
             print(self.box)
+        frames = []
    
 
 day = 1
