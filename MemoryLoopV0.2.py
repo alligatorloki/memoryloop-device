@@ -94,8 +94,8 @@ class Fact:
         r = sr.Recognizer()
         with sr.AudioFile(AUDIO_FILE) as source:
             audio = r.record(source)  # read the entire audio file
-        response = r.recognize_sphinx(audio)
-        #response = r.recognize_vosk(audio)
+        #response = r.recognize_sphinx(audio)
+        response = r.recognize_whisper(audio)
         #userAnswer = input("enter answer\n")
         userAnswer = response
         os.remove("./output.wav")
