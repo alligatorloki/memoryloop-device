@@ -66,6 +66,7 @@ class Fact:
         for i in range(0, int(fs / chunk * seconds)):
             data = stream.read(chunk, exception_on_overflow = False)
             frames.append(data)
+        frames.pop(0)
 
 # Stop and close the stream 
         stream.stop_stream()
@@ -98,7 +99,7 @@ class Fact:
         userAnswer = response
         os.remove("./output.wav")
         os.remove("./balancedoutput.wav")
-        frames.pop(0)
+        
         if(re.search(self.answer,userAnswer)):
             result = ('correct, the answer is: ' + self.answer)
             self.box += 1
