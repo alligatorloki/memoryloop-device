@@ -101,7 +101,7 @@ class Fact:
         os.remove("./output.wav")
         os.remove("./balancedoutput.wav")
         
-        if(re.search(self.answer,userAnswer)):
+        if(re.search(self.answer,userAnswer,re.IGNORECASE)):
             result = ('correct, the answer is: ' + self.answer)
             self.box += 1
             resultAudio = gTTS(result)
