@@ -52,14 +52,17 @@ def remindMeal():
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had dinner?")
     else:
         reminder = ""
-    remidneraudio = gTTS(reminder)
-    remidneraudio.save('result.mp3')
-    reminderAud = pygame.mixer.Sound('result.mp3')
-    songLength = reminderAud.get_length()
-    pygame.mixer.music.load('result.mp3')
-    print(reminder)
-    pygame.mixer.music.play()
-    time.sleep(songLength)
+    try:
+        remidneraudio = gTTS(reminder)
+        remidneraudio.save('result.mp3')
+        reminderAud = pygame.mixer.Sound('result.mp3')
+        songLength = reminderAud.get_length()
+        pygame.mixer.music.load('result.mp3')
+        print(reminder)
+        pygame.mixer.music.play()
+        time.sleep(songLength)
+    except:
+        print("failed whomp whomp")
 class Fact:
     def __init__ (self,question,answer,box):
         self.question = question
