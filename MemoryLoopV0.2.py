@@ -155,6 +155,7 @@ class Fact:
 
 day = 1
 boxes = [7,6,5,4,3,2,1]
+startQ = Fact(startText,"ok",0)
 f1 = Fact("What is the third planet from the sun?","earth",1)
 f2 = Fact("What is the longest river in the world?","nile",1)
 f3 = Fact("Who wrote the cat in the hat?","doctor seuss",1)
@@ -188,19 +189,20 @@ while day<=64:
                         askedYet = True
                     prevRssi = device.rssi
         
-        print(startText)
-        startAudio = pygame.mixer.Sound('start.mp3')
-        songLength = startAudio.get_length()
-        pygame.mixer.music.load('start.mp3')
+        #print(startText)
+        #startAudio = pygame.mixer.Sound('start.mp3')
+        #songLength = startAudio.get_length()
+       # pygame.mixer.music.load('start.mp3')
         
-        pygame.mixer.music.play()
-        time.sleep(songLength)
+       # pygame.mixer.music.play()
+       # time.sleep(songLength)
         
-        aknowledged = False
-        while aknowledged == False:
-            input2 = input()
-            if(input2 == 'ok'):
-                aknowledged = True
+        #aknowledged = False
+       # while aknowledged == False:
+       #     input2 = input()
+       #     if(input2 == 'ok'):
+        #        aknowledged = True
+        startQ.askQuestion()
         for x in boxes:
             checkVal = float(day/pow(2,(x-1)))
             #print(checkVal)
