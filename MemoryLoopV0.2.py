@@ -46,9 +46,9 @@ def remindMeal():
     x = datetime.datetime.now()
     if(11>int(x.strftime("%H"))>6):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had breakfast?")
-    elif(4>int(x.strftime("%H"))>11):
+    elif(16>int(x.strftime("%H"))>11):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had lunch?")
-    elif(8>int(x.strftime("%H"))>4):
+    elif(20>int(x.strftime("%H"))>4):
         reminder = ('the time is:'+ x.strftime("%H") +x.strftime("%M") + "have you had dinner?")
     else:
         reminder = ""
