@@ -198,7 +198,7 @@ while day<=64:
             print(x.question)
             if x not in askedQuestions:
                 print("not in questions"+x.question)
-                x.askQuestion
+                x.askQuestion()
                 askedQuestions.append(x)
                 break
         #aknowledged = False
