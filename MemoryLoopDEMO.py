@@ -195,9 +195,9 @@ while day<=64:
        # pygame.mixer.music.play()
        # time.sleep(songLength)
         for x in factArray:
-            print(x)
+            print(x.question)
             if x not in askedQuestions:
-                print("not in questions"+x)
+                print("not in questions"+x.question)
                 x.askQuestion
                 askedQuestions.append(x)
                 break
