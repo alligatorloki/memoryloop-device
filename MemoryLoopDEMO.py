@@ -3,7 +3,7 @@ import pygame
 import time
 import datetime
 import queue
-
+import random
 import re
 #import pyflac
 import sounddevice as sd
@@ -158,25 +158,23 @@ boxes = [7,6,5,4,3,2,1]
 startQ = Fact(startText,"ok",0)
 f1 = Fact("What is the third planet from the sun?","earth",1)
 f2 = Fact("What is the longest river in the world?","nile",1)
-f3 = Fact("Who wrote the cat in the hat?","doctor seuss",1)
+f3 = Fact("Who wrote the cat in the hat?","dr. seuss",1)
 f4 = Fact("what is the capital of France?","paris",0)
 f5 = Fact("Fill in the blank: Roses are red, violets are :","blue",0)
 f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
 f7 = Fact("what is The largest ocean animal?","blue whale",0)
-futureFacts = [f4,f5]
-factArray = [f1,f2,f3]
+futureFacts = []
+askedQuestions = []
+factArray = [f1,f3,f4,f5]
 
 while day<=64:
-    userInput = input()
-    if(userInput == "day"):
+    
+    
         print("day = ",day)
         i = 0
         
-        if(day != 1):
-            while i<2 and len(futureFacts) > 0:
-                futureFacts[0].box = 1
-                factArray.append(futureFacts[0])
-                futureFacts.pop(0)
+       
+       
         askedYet = False
         prevRssi = 0
         while(askedYet == False):
@@ -196,21 +194,18 @@ while day<=64:
         
        # pygame.mixer.music.play()
        # time.sleep(songLength)
-        
+        for x in factArray:
+            if x not in askedQuestions:
+                x.askQuestion
+                askedQuestions.append(x)
+                break
         #aknowledged = False
        # while aknowledged == False:
        #     input2 = input()
        #     if(input2 == 'ok'):
         #        aknowledged = True
-        startQ.askQuestion()
-        for x in boxes:
-            checkVal = float(day/pow(2,(x-1)))
-            #print(checkVal)
-            if checkVal.is_integer() == True:
-               print("\n*******BOX ",x,"*******")
-               for y in factArray:
-                   if(y.box == x):
-                        y.askQuestion()
+        
+        
        # for x in factArray:
             #print(x.box)
         #    checkVal = float(day/pow(2,(x.box-1)))
@@ -226,15 +221,10 @@ while day<=64:
         
         pygame.mixer.music.play()
         time.sleep(songLength)
-        day += 1
+        
         remindMeal()
 
-    if(userInput == "end"):
-        day = 65
-    if(userInput == 'set'):
-        print('what day?')
-        dayInput = input()
-        day = input    
+    
 
 
      
