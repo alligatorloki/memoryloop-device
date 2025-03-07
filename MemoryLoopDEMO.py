@@ -165,7 +165,7 @@ f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
 f7 = Fact("what is The largest ocean animal?","blue whale",0)
 futureFacts = []
 askedQuestions = []
-factArray = [f1,f3,f4,f5]
+factArray = [f1,f3,f4,f5,f6,f7]
 
 while day<=64:
     
@@ -187,35 +187,35 @@ while day<=64:
                         askedYet = True
                     prevRssi = device.rssi
         
-        #print(startText)
-        #startAudio = pygame.mixer.Sound('start.mp3')
-        #songLength = startAudio.get_length()
-       # pygame.mixer.music.load('start.mp3')
+       #THIS IS THE OLD CODE THAT KINDA WORKED
         
-       # pygame.mixer.music.play()
-       # time.sleep(songLength)
+      
+        #for x in factArray:
+         #   unaskedCount = 0
+          #  print(x.question)
+           # if x not in askedQuestions:
+            #    
+             #   print("not in questions"+x.question)
+              #  x.askQuestion()
+               # askedQuestions.append(x)
+                #break
+            #else:
+             #   unaskedCount += 1
         for x in factArray:
+            unaskedCount = 0
             print(x.question)
             if x not in askedQuestions:
+                
                 print("not in questions"+x.question)
                 x.askQuestion()
                 askedQuestions.append(x)
                 break
-        #aknowledged = False
-       # while aknowledged == False:
-       #     input2 = input()
-       #     if(input2 == 'ok'):
-        #        aknowledged = True
-        
-        
-       # for x in factArray:
-            #print(x.box)
-        #    checkVal = float(day/pow(2,(x.box-1)))
-         #   print(checkVal)
-          #  if checkVal.is_integer() == True:
-           #     print("\n*******BOX ",x.box,"*******")
-            #    print("true")
-             #   x.askQuestion()
+            else:
+                unaskedCount += 1
+                if(unaskedCount == 5):
+                    for y in factArray:
+                        askedQuestions.remove(y)
+       
         print(endText)
         endAudio1 = pygame.mixer.Sound('end.mp3')
         songLength = endAudio1.get_length()
