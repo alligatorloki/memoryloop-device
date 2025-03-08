@@ -45,11 +45,11 @@ print('ready')
 def remindMeal():
     x = datetime.datetime.now()
     if(11>int(x.strftime("%H"))>6):
-        reminder = ('the time is:'+ x.strftime("%I") +x.strftime("%M") + ". have you had breakfast?")
+        reminder = ("By the way, have you had breakfast?")
     elif(16>int(x.strftime("%H"))>11):
-        reminder = ('the time is:'+ x.strftime("%I") +x.strftime("%M") + ". have you had lunch?")
+        reminder = ("By the way, have you had lunch?")
     elif(20>int(x.strftime("%H"))>4):
-        reminder = ('the time is:'+ x.strftime("%I") +x.strftime("%M") + ". have you had dinner?")
+        reminder = ("By the way, have you had dinner?")
     else:
         reminder = ""
     try:
@@ -165,8 +165,8 @@ f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
 f7 = Fact("what is The largest ocean animal?","blue whale",0)
 futureFacts = []
 askedQuestions = []
-##factArray = [f1,f3,f4,f5,f6,f7]
-factArray = [f1,f2]
+factArray = [f1,f3,f4,f5,f6,f7]
+
 
 while day<=64:
         unaskedCount = 0
@@ -213,7 +213,7 @@ while day<=64:
                 break
             else:
                 unaskedCount += 1
-                if(unaskedCount == 1):
+                if(unaskedCount == (factArray.__len__()-1)):
                     for y in factArray:
                         try:
                             askedQuestions.remove(y)
