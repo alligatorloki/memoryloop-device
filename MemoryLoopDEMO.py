@@ -77,7 +77,7 @@ class Fact:
         questionAudio = gTTS(self.question)
         questionAudio.save('question.mp3')
         p = pyaudio.PyAudio()
-        startpy = pygame.mixer.sound("start.mp3")
+        startpy = pygame.mixer.Sound("start.mp3")
         songLength = startpy.get_length()
         pygame.mixer.music.load('start.mp3')
         pygame.mixer.music.play()
