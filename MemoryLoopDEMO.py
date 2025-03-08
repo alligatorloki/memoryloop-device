@@ -35,7 +35,7 @@ r = sr.Recognizer()
 
 frames = []  # Initialize array to store frames
 
-startText = "Hello. I am going to ask you some questions. Please answer to the best of your ability. Say ok to continue"
+startText = "Hello. I am going to ask you a question. Please answer to the best of your ability."
 endText = "Thank you for answering these questions. That will be all"
 startAudio = gTTS(startText)
 endAudio = gTTS(endText)
@@ -77,10 +77,18 @@ class Fact:
         questionAudio = gTTS(self.question)
         questionAudio.save('question.mp3')
         p = pyaudio.PyAudio()
+        startpy = pygame.mixer.sound("start.mp3")
+        songLength = startpy.get_length()
+        pygame.mixer.music.load('start.mp3')
+        pygame.mixer.music.play()
+        startpy.set_volume(1)
+        time.sleep(songLength)
         qAudio = pygame.mixer.Sound('question.mp3')
         songLength = qAudio.get_length()
         pygame.mixer.music.load('question.mp3')
+        
         pygame.mixer.music.play()
+        qAudio.set_volume(1)
         time.sleep(songLength)
         stream = p.open(format=sample_format,
                 channels=channels,
@@ -135,6 +143,7 @@ class Fact:
             pygame.mixer.music.load('result.mp3')
             print(result)
             pygame.mixer.music.play()
+            resAudio.set_volume(1)
             time.sleep(songLength)
             print(self.box)
         else:
@@ -147,6 +156,7 @@ class Fact:
             pygame.mixer.music.load('result.mp3')
             print(result)
             pygame.mixer.music.play()
+            resAudio.set_volume(1)
             time.sleep(songLength)
             
             print(self.box)
@@ -224,7 +234,7 @@ while day<=64:
         endAudio1 = pygame.mixer.Sound('end.mp3')
         songLength = endAudio1.get_length()
         pygame.mixer.music.load('end.mp3')
-        
+        endAudio1.set_volume(1)
         pygame.mixer.music.play()
         time.sleep(songLength)
         
