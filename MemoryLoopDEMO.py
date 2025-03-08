@@ -168,7 +168,7 @@ askedQuestions = []
 factArray = [f1,f3,f4,f5,f6,f7]
 
 while day<=64:
-    
+        unaskedCount = 0
     
         print("day = ",day)
         i = 0
@@ -202,7 +202,7 @@ while day<=64:
             #else:
              #   unaskedCount += 1
         for x in factArray:
-            unaskedCount = 0
+            
             print(x.question)
             if x not in askedQuestions:
                 
