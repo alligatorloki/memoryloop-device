@@ -165,7 +165,8 @@ f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
 f7 = Fact("what is The largest ocean animal?","blue whale",0)
 futureFacts = []
 askedQuestions = []
-factArray = [f1,f3,f4,f5,f6,f7]
+##factArray = [f1,f3,f4,f5,f6,f7]
+factArray = [f1,f2]
 
 while day<=64:
         unaskedCount = 0
@@ -212,9 +213,12 @@ while day<=64:
                 break
             else:
                 unaskedCount += 1
-                if(unaskedCount == 5):
+                if(unaskedCount == 1):
                     for y in factArray:
-                        askedQuestions.remove(y)
+                        try:
+                            askedQuestions.remove(y)
+                        except:
+                            print("failed")
        
         print(endText)
         endAudio1 = pygame.mixer.Sound('end.mp3')
