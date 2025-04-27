@@ -45,11 +45,11 @@ print('ready')
 def remindMeal():
     x = datetime.datetime.now()
     if(11>int(x.strftime("%H"))>6):
-        reminder = ("By the way, have you had breakfast?")
+        reminder = ("By the way, did you take your medicine yet?")
     elif(16>int(x.strftime("%H"))>11):
-        reminder = ("By the way, have you had lunch?")
+        reminder = ("By the way, did you take your medicine yet?")
     elif(20>int(x.strftime("%H"))>4):
-        reminder = ("By the way, have you had dinner?")
+        reminder = ("By the way, did you take your medicine yet?")
     else:
         reminder = ""
     try:
@@ -166,13 +166,13 @@ class Fact:
 day = 1
 boxes = [7,6,5,4,3,2,1]
 startQ = Fact(startText,"ok",0)
-f1 = Fact("What is the third planet from the sun?","earth",1)
-f2 = Fact("What is the longest river in the world?","nile",1)
-f3 = Fact("Who wrote the cat in the hat?","dr. seuss",1)
-f4 = Fact("what is the capital of France?","paris",0)
-f5 = Fact("Fill in the blank: Roses are red, violets are :","blue",0)
-f6 = Fact("Who gave the stature of liberty to the USA?","france",0)
-f7 = Fact("what is The largest ocean animal?","blue whale",0)
+f1 = Fact("What is your daughter's birthday?","March 14th",1)
+f2 = Fact("What is your daughter's birthday?","March 14th"1)
+f3 = Fact("What is your daughter's birthday?","March 14th",1)
+f4 = Fact("What is your daughter's birthday?","March 14th",0)
+f5 = Fact("What is your daughter's birthday?","March 14th"0)
+f6 = Fact("What is your daughter's birthday?","March 14th",0)
+f7 = Fact("What is your daughter's birthday?","March 14th",0)
 futureFacts = []
 askedQuestions = []
 factArray = [f1,f3,f4,f5,f6,f7]
