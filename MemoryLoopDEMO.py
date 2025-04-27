@@ -189,14 +189,19 @@ while day<=64:
         askedYet = False
         prevRssi = 0
         while(askedYet == False):
-            devices = scanner.scan(3.0)
+            found = False
+            devices = scanner.scan(1.0)
             for device in devices:
                 if(device.addr == "dd:34:02:0a:44:38"):
                     print("DEV = {} RSSI = {}".format(device.addr, device.rssi))
+                    found = True
                     if(device.rssi > -50 and prevRssi <= -50):
                         print("final if triggerd")
                         askedYet = True
+                        
                     prevRssi = device.rssi
+            if(found == False):
+                prevRssi = -100000
         
        #THIS IS THE OLD CODE THAT KINDA WORKED
         
